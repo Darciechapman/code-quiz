@@ -1,3 +1,36 @@
 body {
     background-color: white;
 }
+
+h3 {
+    background-color: black;
+    color: white;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 70px;
+    font-size: 30px;
+}
+
+button {
+    color: blueviolet;
+    border-radius: 5px;
+    padding: 2px 10px;
+}
+
+#question1 {
+    display: none;
+}
+
+#question2 {
+    display: none;
+}
+
+#question3 {
+    display: none;
+}
+
+#question4 {
+    display: none;
+}

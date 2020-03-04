@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-us">
     <head>
         <meta charset="UTF-8">
         <title>Code Quiz</title>
@@ -8,21 +8,21 @@
     </head>
 
     <body>
-        <script src="logic.js"></script>
 
         <div class="container">
             <div class="row">
-                <div class="col-md-11">
+                <div class="col-md-10">
                     <h1>Code Quiz</h1>
                 </div>
 
-                <div class="col-md-1">
-                    <h3>Time:</h3>
-                </div>
+                <div class="col-md-2">
+                    <div class="container">
+                    <h3 id="count">75</h3>
+                    </div>
             </div>
 
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <h4>High Scores</h4>
                     <li></li>
                 </div>
@@ -35,7 +35,12 @@
 
                 </div>
 
+                <!-- start btn -->
+
                 <div class="col-md-6">
+
+                    <button id="start">START</button>
+
                     <div class="container" id="question1">
                         <h3>Question1</h3>
                         <button>option11</button>
@@ -74,5 +79,7 @@
                 </div>
             </div>
         </div>
+
+        <script src="logic.js"></script>
     </body>
 </html>
