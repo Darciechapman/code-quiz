@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en-us">
     <head>
-        <meta charset="UTF-8">
+        <meta charset="UTF-8" />
         <title>Code Quiz</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
         <link rel="stylesheet" type="text/css" href="style.css"></style>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        
     </head>
 
-    <body>
+    <body id="body">
 
         <div class="container">
             <div class="row">
@@ -22,60 +24,39 @@
             </div>
 
             <div class="row">
-                <div class="col-md-2">
-                    <h4>High Scores</h4>
-                    <li></li>
+                <div class="col-md-4">
+                    <div class="high-score-container">
+                    <h5>High Scores</h5>
+                    <li id="high-scores"></li>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="container">
+        <div class="container" id="box-container"></div>
             <div class="row">
-                <div class="col-md-3">
-
-                </div>
+                <div class="col-md-3"></div>
 
                 <!-- start btn -->
 
                 <div class="col-md-6">
 
+                    <div class="questions-container">
                     <button id="start">START</button>
 
-                    <div class="container" id="question1">
-                        <h3>Question1</h3>
-                        <button>option11</button>
-                        <button>option12</button>
-                        <button>option13</button>
-                        <button>option14</button>
+                    <div id="questions">
+                        <h3 id="question-header"></h3>
                     </div>
 
-                    <div class="container" id="question2">
-                        <h3>Question2</h3>
-                        <button>option21</button>
-                        <button>option22</button>
-                        <button>option23</button>
-                        <button>option24</button>
+                    <div class="p-3"></div>
+
+                    <div class="option-container">
+                    <div id="options" class="options"></div>
                     </div>
+                    
 
-                    <div class="container" id="question3">
-                        <h3>Question3</h3>
-                        <button>option31</button>
-                        <button>option32</button>
-                        <button>option33</button>
-                        <button>option34</button>
+                    <div id="mark" class="mark hide"></div>
                     </div>
-
-                    <div class="container" id="question4">
-                        <h3>Question4</h3>
-                        <button>option41</button>
-                        <button>option42</button>
-                        <button>option43</button>
-                        <button>option44</button>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-
                 </div>
             </div>
         </div>
