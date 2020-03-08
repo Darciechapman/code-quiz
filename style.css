@@ -31,6 +31,14 @@
     border-color: black;
 }
 
+.btn.correct {
+    background-color: green;
+}
+
+.btn.wrong {
+    background-color: red;
+}
+
 .hide {
     display: none;
 }
