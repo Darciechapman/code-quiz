@@ -37,7 +37,7 @@ QUESTION ARRAY LAYOUT
 
 FUNCTIONS
 
-![startquizfunc](/assests/start-quiz-func.png 250x)
+![startquizfunc](/assests/start-quiz-func.png = 250x)
 
 ![getquestionfunc](/assests/get-question-func.png 250x)
 
@@ -49,4 +49,4 @@ FUNCTIONS
 
 ![countdowntimer](/assests/tiktok-func.png)
 
-![endquizfunc](//assests/end-quiz-func.png)
+![endquizfunc](/assests/end-quiz-func.png)
