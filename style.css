@@ -1,4 +1,4 @@
-#body {
+.body {
     background-color: black;
     color: white;
 }
@@ -9,11 +9,11 @@
     --hue-correct: 145;
 }
 
-body.correct {
+.body.correct {
     --hue: var(--hue-correct);
 }
 
-body.wrong {
+.body.wrong {
     --hue: var(--hue-wrong);
 }
 

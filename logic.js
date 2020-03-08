@@ -105,18 +105,27 @@ function selectAnswer(e) {
   Array.from(answerBtnsEl.children).forEach(button => {
     setStatusClass(button, button.dataset.correct);
   })
-}
+  if (shuffledQuestions.length > currentQuestionIndex + 1) {
+  } else {
+    startBtn.innerText = "Restart"
+    startBtn.classList.remove("hide");
+  }
+}  
 
 function setStatusClass(element, correct, counter) {
   clearStatusClass(element)
   if (correct) {
-    element.classList.add("correct");
+    console.log("yes");
 
-    counter -= 15;
-    timer.textContent = counter;
   
   } else {
-    element.classList.add("wrong");
+    console.log("no");
+    counter -= 15;
+    if (count < 0) {
+      count = 0;
+    }
+    
+    timer.textContent = counter;
   }
 }
 
