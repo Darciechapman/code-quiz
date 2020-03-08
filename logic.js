@@ -4,6 +4,7 @@ var timer = document.getElementById("count");
 var questionContainerEl = document.getElementById("questions-container");
 const questionEl = document.getElementById("question"); 
 const answerBtnsEl = document.getElementById("answer-buttons");
+const highScoreContainer = document.getElementById("high-score-container");
 
 
 let shuffledQuestions, currentQuestionIndex;
@@ -33,7 +34,7 @@ const questions = [
   ]
 }, 
 { 
-  question: "By the time he passed away, how many palaces did he have?",
+  question: "How many palaces did Henry VIII have, by the time he passed?",
   answer: [
     { text: "23", correct: false },
     { text: "10", correct: false },
@@ -113,7 +114,7 @@ function selectAnswer(e) {
   }
 }  
 
-function setStatusClass(element, correct) {
+function setStatusClass(element, correct, score) {
   //clearing any status it may have from previous questions
   clearStatusClass(element)
   if (correct) {
@@ -130,32 +131,6 @@ function clearStatusClass(element) {
   element.classList.remove("wrong");
 }
 
-/*function results() {
-  
-  if (clickedBtn === answer.correct) {
-
-    counter -= 15;
-
-    if (count < 0) {
-      count = 0;
-      endQuiz();
-    }  
-    timer.textContent = counter;
-  }
-}
-*/
-
-/*
-  i++;
-
-  if (i === questions.length) {
-    quizEnd();
-  } else {
-    getQuestion();
-  }
-}
-*/
-
 function tikTok() {
     
   counter--;
@@ -171,9 +146,9 @@ function endQuiz() {
   questionContainerEl.classList.add("hide");
 
   timer.style.display = "none";
+
+  highScoreContainer.classList.remove("hide");
 }
-
-
 
 
 startBtn.addEventListener("click", startQuiz);
