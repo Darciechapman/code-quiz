@@ -26,31 +26,30 @@ const questions = [
 { 
   question: "How many of Henry VIII's six wives were executed?",
   answer: [
-    { text: "2", correct: true },
     { text: "0", correct: false },
     { text: "4", correct: false },
+    { text: "2", correct: true },
     { text: "1", correct: false },
   ]
 }, 
 { 
   question: "By the time he passed away, how many palaces did he have?",
   answer: [
-    { text: "50", correct: true },
     { text: "23", correct: false },
     { text: "10", correct: false },
     { text: "65", correct: false },
+    { text: "50", correct: true },
   ]
 }, 
 { 
   question: "Who was Henry VIII's dad?",
   answer: [
-    { text: "henry VII", correct: true },
     { text: "james VI", correct: false },
+    { text: "henry VII", correct: true },
     { text: "Harold Godwinson", correct: false },
     { text: "Piers morgan", correct: false },
   ]
 }] 
-   
 
 function startQuiz() {
 
@@ -73,8 +72,6 @@ function getQuestion() {
   resetState()
   showQuestion(shuffledQuestions[currentQuestionIndex]) 
 
-  //questionHeaderId.innerText = questions.question
-
 }
 
 function showQuestion(question) {
@@ -86,7 +83,7 @@ function showQuestion(question) {
     if (answer.correct) {
       button.dataset.correct = answer.correct
     }
-    button.addEventListener("click", selectAnswer)
+    const clickedBtn = button.addEventListener("click", selectAnswer)
     answerBtnsEl.appendChild(button);
   })
 }
@@ -107,51 +104,48 @@ function selectAnswer(e) {
   Array.from(answerBtnsEl.children).forEach(button => {
     //checking if the button is correct or not
     setStatusClass(button, button.dataset.correct);
-  })
+    })
   nextBtn.classList.remove("hide")
   if (shuffledQuestions.length > currentQuestionIndex + 1) {
+    nextBtn.classList.remove("hide");
   } else {
-    startBtn.innerText = "Restart"
-    startBtn.classList.remove("hide");
+    endQuiz();
   }
 }  
 
-function setStatusClass(element, correct, counter) {
+function setStatusClass(element, correct) {
   //clearing any status it may have from previous questions
   clearStatusClass(element)
   if (correct) {
     element.classList.add("correct");
 
-  
   } else {
     element.classList.add("wrong");
-  
+
   }
 }
 
 function clearStatusClass(element) {
   element.classList.remove("correct");
   element.classList.remove("wrong");
-} 
+}
 
-
-/*function questionClicked() {
-
-  if (this.value !== question[i].answer) {
+/*function results() {
+  
+  if (clickedBtn === answer.correct) {
 
     counter -= 15;
 
     if (count < 0) {
       count = 0;
-    }
-    
+      endQuiz();
+    }  
     timer.textContent = counter;
-    
-
-  } else {
-    
   }
+}
+*/
 
+/*
   i++;
 
   if (i === questions.length) {
@@ -164,14 +158,22 @@ function clearStatusClass(element) {
 
 function tikTok() {
     
-    counter--;
-    timer.textContent = counter;
-  
-    
-    if (counter <= 0) {
-      return counter = 1;
-    }
+  counter--;
+  timer.textContent = counter;
+
+  if (counter < 0) {
+    counter = 0;
+    endQuiz();
   }
+}
+
+function endQuiz() {
+  questionContainerEl.classList.add("hide");
+
+  timer.style.display = "none";
+}
+
+
 
 
 startBtn.addEventListener("click", startQuiz);
@@ -181,6 +183,12 @@ nextBtn.addEventListener("click", () => {
   currentQuestionIndex++
   getQuestion()
 })
+
+/*correct.addEventListener("click", () => {
+  score++;
+  console.log(score);
+})
+*/
 
 
 
