@@ -1,4 +1,5 @@
-var startBtn = document.getElementById("start");
+var startBtn = document.getElementById("start-btn");
+var nextBtn = document.getElementById("next-btn");
 var timer = document.getElementById("count");
 var questionContainerEl = document.getElementById("questions-container");
 const questionEl = document.getElementById("question"); 
@@ -83,7 +84,7 @@ function showQuestion(question) {
     button.innerText = answer.text
     button.classList.add("btn")
     if (answer.correct) {
-      button.dataset.carrect = answer.correct
+      button.dataset.correct = answer.correct
     }
     button.addEventListener("click", selectAnswer)
     answerBtnsEl.appendChild(button);
@@ -91,6 +92,7 @@ function showQuestion(question) {
 }
   
 function resetState() {
+  nextBtn.classList.add("hide");
   //removing previous answers. if there is a previous child remove
   while (answerBtnsEl.firstChild) {
     answerBtnsEl.removeChild(answerBtnsEl.firstChild)
@@ -101,10 +103,12 @@ function selectAnswer(e) {
   const selectedBtn = e.target
   const correct = selectedBtn.dataset.correct
   setStatusClass(document.body, correct);
-  //loop through all btns
+  //creating answerbtnsEl.childern into an array. Enabling a loop through all btns
   Array.from(answerBtnsEl.children).forEach(button => {
+    //checking if the button is correct or not
     setStatusClass(button, button.dataset.correct);
   })
+  nextBtn.classList.remove("hide")
   if (shuffledQuestions.length > currentQuestionIndex + 1) {
   } else {
     startBtn.innerText = "Restart"
@@ -113,26 +117,23 @@ function selectAnswer(e) {
 }  
 
 function setStatusClass(element, correct, counter) {
+  //clearing any status it may have from previous questions
   clearStatusClass(element)
   if (correct) {
-    console.log("yes");
+    element.classList.add("correct");
 
   
   } else {
-    console.log("no");
-    counter -= 15;
-    if (count < 0) {
-      count = 0;
-    }
-    
-    timer.textContent = counter;
+    element.classList.add("wrong");
+  
   }
 }
 
 function clearStatusClass(element) {
-  element.classList.remove("corrent");
+  element.classList.remove("correct");
   element.classList.remove("wrong");
-}
+} 
+
 
 /*function questionClicked() {
 
@@ -176,7 +177,7 @@ function tikTok() {
 startBtn.addEventListener("click", startQuiz);
 
 //going to next question
-answerBtnsEl.addEventListener("click", () => {
+nextBtn.addEventListener("click", () => {
   currentQuestionIndex++
   getQuestion()
 })
