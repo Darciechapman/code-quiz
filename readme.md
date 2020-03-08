@@ -16,10 +16,8 @@ HTML
 - start button
 - question-container
 - question-tittle
-
-Answer buttons
-
-Script, CSS, & bootstraplink
+- Answer buttons
+- Script, CSS, & bootstraplink
 
 CSS
 - hide class
