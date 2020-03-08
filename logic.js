@@ -45,10 +45,10 @@ const questions = [
 { 
   question: "Who was Henry VIII's dad?",
   answer: [
-    { text: "james VI", correct: false },
-    { text: "henry VII", correct: true },
+    { text: "James VI", correct: false },
+    { text: "Henry VII", correct: true },
     { text: "Harold Godwinson", correct: false },
-    { text: "Piers morgan", correct: false },
+    { text: "Piers Morgan", correct: false },
   ]
 }] 
 
@@ -84,7 +84,7 @@ function showQuestion(question) {
     if (answer.correct) {
       button.dataset.correct = answer.correct
     }
-    const clickedBtn = button.addEventListener("click", selectAnswer)
+    button.addEventListener("click", selectAnswer)
     answerBtnsEl.appendChild(button);
   })
 }
@@ -148,6 +148,9 @@ function endQuiz() {
   timer.style.display = "none";
 
   highScoreContainer.classList.remove("hide");
+
+  timerScoreDisplay();
+  
 }
 
 
