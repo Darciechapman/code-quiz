@@ -37,13 +37,13 @@ QUESTION ARRAY LAYOUT
 
 FUNCTIONS
 
-![startquizfunc](/assests/start-quiz-func.png)
+![startquizfunc](/assests/start-quiz-func.png 250x)
 
-![getquestionfunc](/assests/get-question-func.png)
+![getquestionfunc](/assests/get-question-func.png 250x)
 
-![showquestionfunc](/assests/show-question-func.png)
+![showquestionfunc](/assests/show-question-func.png 250x)
 
-![resetstate](/assests/reset-stat-func.png)
+![resetstate](/assests/reset-state-func.png)
 
 ![sectectanswerfunc](/assests/selesct-answer-func.png)
 
