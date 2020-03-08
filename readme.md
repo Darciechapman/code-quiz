@@ -1,18 +1,35 @@
+CODE QUIZ
+
+- Multiple choice quiz
+- Displays questions and answer options when clicking start
+- start button also starts a timer
+- once all the questions are asked, time runs out. 
+- or if youre too slow, and the time runs out before all the questions are asked, quiz stops
+- once quiz ends, scores display shows
+- score display saves your score and name into the local drive
+- start again button to start quiz again, still saves scores
+
+
 HTML
--tittle
--start button
--question-container
--question-tittle
+
+- title
+- start button
+- question-container
+- question-tittle
+
 Answer buttons
+
 Script, CSS, & bootstraplink
 
 CSS
 - hide class
 - wrong class
 - correct class
+
 For javascript referencing, when changing visibility and colour
 
 QUESTIONS
+
 When did Henry VIII become king?
 - correct answer = 1509
 - wrong answers=1520, 1525, 1542
