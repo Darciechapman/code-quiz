@@ -1,37 +1,54 @@
 var startBtn = document.getElementById("start");
 var timer = document.getElementById("count");
-var questionHeaderId = document.getElementById("question-header");
-var questionsEl = document.getElementById("questions");
-var optionsEl = document.getElementById("options");
-var markEl = document.getElementById("mark");
+var questionContainerEl = document.getElementById("questions-container");
+const questionEl = document.getElementById("question"); 
+const answerBtnsEl = document.getElementById("answer-buttons");
 
+
+let shuffledQuestions, currentQuestionIndex;
 var i = 0;
 var score = 0;
 var counter = 75;
 
 //arry of object
 //goal: to conver irtems inside array o
-const questionsString = [
+const questions = [
 { 
-  question: "Is henry Viii cute?",
-  options: ["yes", "no", "maybe", "so"],
-  answer: "yes"
+  question: "When did Henry VIII become king?",
+  answer: [
+    { text: "1509", correct: true },
+    { text: "1520", correct: false },
+    { text: "1525", correct: false },
+    { text: "1542", correct: false },
+  ]
 }, 
 { 
-  question: "second question",
-  options: ["yes", "no", "maybe", "so"],
-  answer: "yes"
+  question: "How many of Henry VIII's six wives were executed?",
+  answer: [
+    { text: "2", correct: true },
+    { text: "0", correct: false },
+    { text: "4", correct: false },
+    { text: "1", correct: false },
+  ]
 }, 
 { 
-  question: "third",
-  options: ["yes", "no", "maybe", "so"],
-  answer: "yes"
+  question: "By the time he passed away, how many palaces did he have?",
+  answer: [
+    { text: "50", correct: true },
+    { text: "23", correct: false },
+    { text: "10", correct: false },
+    { text: "65", correct: false },
+  ]
 }, 
 { 
-  question: "forth",
-  options: ["yes", "no", "maybe", "so"],
-  answer: "yes"
-}]
+  question: "Who was Henry VIII's dad?",
+  answer: [
+    { text: "henry VII", correct: true },
+    { text: "james VI", correct: false },
+    { text: "Harold Godwinson", correct: false },
+    { text: "Piers morgan", correct: false },
+  ]
+}] 
    
 
 function startQuiz() {
@@ -42,38 +59,73 @@ function startQuiz() {
 
   startBtn.style.display = "none";
 
-  askQuestions();
+  shuffledQuestions = questions.sort(() => Math.random() - .5)
+  currentQuestionIndex = 0
+  questionContainerEl.classList.remove("hide");
+
+  getQuestion();
   
 }
 
 
-function askQuestions() {
+function getQuestion() {
+  resetState()
+  showQuestion(shuffledQuestions[currentQuestionIndex]) 
 
   //questionHeaderId.innerText = questions.question
 
-  for (var i = 0; i < questionsString.length; i++) {
-    var question1 = questionsString[i];
-    var title = question1.question
-    questionsEl.textContent = title;
-    
-  }
+}
 
-    optionsEl.innerHTML = "";
-
-    var optionEl = document.createElement("button");
-    optionEl.setAttribute("class", "option");
-    optionEl.setAttribute("value", options);
-    
-    optionEl.textContent = i + 1 + ". " + options;
-
-    optionEl.onclick = questionClicked;
-
-    optionsEl.appendChild(optionEl);
-  };
+function showQuestion(question) {
+  questionEl.innerText = question.question
+  question.answer.forEach(answer => {
+    const button = document.createElement("button");
+    button.innerText = answer.text
+    button.classList.add("btn")
+    if (answer.correct) {
+      button.dataset.carrect = answer.correct
+    }
+    button.addEventListener("click", selectAnswer)
+    answerBtnsEl.appendChild(button);
+  })
+}
   
+function resetState() {
+  //removing previous answers. if there is a previous child remove
+  while (answerBtnsEl.firstChild) {
+    answerBtnsEl.removeChild(answerBtnsEl.firstChild)
+  }
+}
 
+function selectAnswer(e) {
+  const selectedBtn = e.target
+  const correct = selectedBtn.dataset.correct
+  setStatusClass(document.body, correct);
+  //loop through all btns
+  Array.from(answerBtnsEl.children).forEach(button => {
+    setStatusClass(button, button.dataset.correct);
+  })
+}
 
-function questionClicked() {
+function setStatusClass(element, correct, counter) {
+  clearStatusClass(element)
+  if (correct) {
+    element.classList.add("correct");
+
+    counter -= 15;
+    timer.textContent = counter;
+  
+  } else {
+    element.classList.add("wrong");
+  }
+}
+
+function clearStatusClass(element) {
+  element.classList.remove("corrent");
+  element.classList.remove("wrong");
+}
+
+/*function questionClicked() {
 
   if (this.value !== question[i].answer) {
 
@@ -84,10 +136,10 @@ function questionClicked() {
     }
     
     timer.textContent = counter;
-    markEl.textContent = "Incorrect";
+    
 
   } else {
-    markEl.textContent = "You're right";
+    
   }
 
   i++;
@@ -95,20 +147,10 @@ function questionClicked() {
   if (i === questions.length) {
     quizEnd();
   } else {
-    askQuestions();
+    getQuestion();
   }
 }
-
-function quizEnd() {
-
-  clearInterval(timer);
-
-  var endScore = document.getElementById("score");
-  endScore.textContent = count;
-
-  questionsEl.setAttribute("class", "hide");
-}
-
+*/
 
 function tikTok() {
     
@@ -123,6 +165,12 @@ function tikTok() {
 
 
 startBtn.addEventListener("click", startQuiz);
+
+//going to next question
+answerBtnsEl.addEventListener("click", () => {
+  currentQuestionIndex++
+  getQuestion()
+})
 
 
 
