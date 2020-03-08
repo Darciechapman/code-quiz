@@ -149,7 +149,7 @@ function endQuiz() {
 
   highScoreContainer.classList.remove("hide");
 
-  timerScoreDisplay();
+  //timerScoreDisplay();
   
 }
 
